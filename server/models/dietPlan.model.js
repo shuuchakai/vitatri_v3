@@ -9,10 +9,56 @@ const dietPlanSchema = new Schema({
         type: String,
         required: true
     },
-    recipes: [{
-        type: Schema.Types.ObjectId,
-        ref: "Recipe"
-    }],
+    recipes: [
+        {
+            recipeName: {
+                type: String,
+                required: true
+            },
+            ingredients: [
+                {
+                    ingredientName: {
+                        type: String,
+                        required: true
+                    },
+                    calories: {
+                        type: Number,
+                        required: true
+                    },
+                    proteins: {
+                        type: Number,
+                        required: true
+                    },
+                    fats: {
+                        type: Number,
+                        required: true
+                    },
+                    carbs: {
+                        type: Number,
+                        required: true
+                    }
+                }
+            ],
+            totalNutritionalValues: {
+                calories: {
+                    type: Number,
+                    required: true
+                },
+                proteins: {
+                    type: Number,
+                    required: true
+                },
+                fats: {
+                    type: Number,
+                    required: true
+                },
+                carbs: {
+                    type: Number,
+                    required: true
+                }
+            }
+        }
+    ],
     user: {
         type: Schema.Types.ObjectId,
         ref: "User"

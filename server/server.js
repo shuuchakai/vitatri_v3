@@ -8,6 +8,7 @@ import rateLimit from 'express-rate-limit';
 
 import userRouter from './routes/user.router.js';
 import specificGoalRouter from './routes/specificGoal.router.js';
+import dietPlanRouter from './routes/dietPlan.router.js';
 
 dotenv.config();
 
@@ -42,6 +43,7 @@ app.use((err, req, res, next) => {
 // Rutas del servidor
 app.use('/api/user', userRouter);
 app.use('/api/goal', specificGoalRouter);
+app.use('/api/diet-plan', dietPlanRouter);
 
 mongoose.connect(MONGODB_URL, {
     useNewUrlParser: true,
