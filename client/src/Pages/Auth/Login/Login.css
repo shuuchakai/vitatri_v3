@@ -1,0 +1,119 @@
+.loginFormContainer {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 1100px;
+
+    display: flex;
+    justify-content: center;
+}
+
+.loginForm {
+    width: 600px;
+    padding: 30px 40px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+
+
+.loginFormContainer_title {
+    margin: 20px;
+
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    color: var(--primary-color-800);
+
+    transition: opacity 0.3s ease;
+}
+
+.loginFormContainer_title:hover {
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.loginForm_title {
+    margin: 0 auto;
+    margin-bottom: 10px;
+
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--primary-color-800);
+}
+
+.loginFormNav {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+
+    gap: 20px;
+}
+
+.loginFormNav_title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--primary-color-700);
+}
+
+.loginFormNav_input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--blackandwhite-200);
+    border-radius: 5px;
+
+    font-size: 14px;
+
+    outline: none;
+}
+
+.loginFormNav_input:focus {
+    border: 1px solid var(--primary-color-500);
+}
+
+.loginFormButton {
+    width: 100%;
+    padding: 10px;
+
+    border: none;
+    border-radius: 5px;
+    
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--primary-color-50);
+    background: var(--primary-color-800);
+
+    transition: background 0.3s ease;
+}
+
+.loginFormButton:hover {
+    cursor: pointer;
+    background: var(--primary-color-700);
+}
+
+.loginForm_bottom {
+    margin: 0 auto;
+
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--primary-color-800);
+}
+
+.loginForm_bottomSpan {
+    color: var(--secondary-color-500);
+    text-decoration: underline;
+
+    transition: color 0.3s ease;
+}
+
+.loginForm_bottomSpan:hover {
+    color: var(--secondary-color-700);
+    cursor: pointer;
+}

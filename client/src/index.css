@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    --primary-color-50: #FFE9DE;
+    --primary-color-100: #FFC8AC;
+    --primary-color-200: #FFA77A;
+    --primary-color-300: #FB9154;
+    --primary-color-400: #F67B2D;
+    --primary-color-500: #D95E17;
+    --primary-color-600: #BB4100;
+    --primary-color-700: #9D3700;
+    --primary-color-800: #7E2C00;
+    --primary-color-900: #401600;
+
+    --secondary-color-50: #FCEBCF;
+    --secondary-color-100: #FBE1B7;
+    --secondary-color-200: #F9D69F;
+    --secondary-color-300: #F6C16F;
+    --secondary-color-400: #F2AC3E;
+    --secondary-color-500: #D49737;
+    --secondary-color-600: #B6812F;
+    --secondary-color-700: #986C27;
+    --secondary-color-800: #79561F;
+    --secondary-color-900: #3D2B10;
+
+    --tertiary-color-50: #DCF5F3;
+    --tertiary-color-100: #CAF0ED;
+    --tertiary-color-200: #B8EBE6;
+    --tertiary-color-300: #95E1D9;
+    --tertiary-color-400: #71D6CC;
+    --tertiary-color-500: #63BCB3;
+    --tertiary-color-600: #55A199;
+    --tertiary-color-700: #478680;
+    --tertiary-color-800: #396B66;
+    --tertiary-color-900: #2B514D;
+
+    --quaternary-color-50: #E0F5DC;
+    --quaternary-color-10: #C1EBB9;
+    --quaternary-color-200: #A2E196;
+    --quaternary-color-300: #93DC85;
+    --quaternary-color-400: #83D673;
+    --quaternary-color-500: #73BC65;
+    --quaternary-color-600: #63A157;
+    --quaternary-color-700: #538649;
+    --quaternary-color-800: #426B3A;
+    --quaternary-color-900: #21361D;
+
+    --blackandwhite-50: #f0f0f0ff;
+    --blackandwhite-100: #e0e0e0ff;
+    --blackandwhite-200: #c0c0c0ff;
+    --blackandwhite-300: #a8a8a8ff;
+    --blackandwhite-400: #909090ff;
+    --blackandwhite-500: #808080ff;
+    --blackandwhite-600: #606060ff;
+    --blackandwhite-700: #404040ff;
+    --blackandwhite-800: #202020ff;
+    --blackandwhite-900: #101010ff;
+
+    --primary-secondary-gradient-linear: linear-gradient(90deg, rgb(246, 123, 45) 0%, rgba(242, 172, 62, 1) 100%);
+    --tertiary-quaternary-gradient-linear: linear-gradient(90deg, rgba(113, 214, 204, 1) 0%, rgba(131, 214, 115, 1) 100%);
+    --primary900-primary-secondary-gradient-linear: linear-gradient(135deg, rgba(64, 22, 0, 1) 0%, rgba(246, 123, 45, 1) 36%, rgba(242, 172, 62, 1) 100%);
+
+    --font-family: 'Montserrat', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+
+    font-family: var(--font-family);
+    color: var(--primary-color-900);
+    text-decoration: none;
+    letter-spacing: 1px;
+}
+
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+}

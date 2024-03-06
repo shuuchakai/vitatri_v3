@@ -5,7 +5,7 @@ import DietPlan from '../models/dietPlan.model.js';
 
 
 const openai = new OpenAI({
-    apiKey: process.env.OPENAI_API_KEY,
+    apiKey: process.env.OPENAI_API_KEY || "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",
 });
 
 
@@ -20,14 +20,19 @@ const createDietPlan = async (req, res) => {
         Peso: ${user.weight} kg
         Altura: ${user.height} cm
         Meta principal: ${user.mainGoal}
-        El plan de dietas tienes que dividirlo en un json de una sola línea, así:
-    {"name": "nombre del plan de dieta","description": "pequeña descripción de la receta","recipes": [{"recipeName": "nombre de la receta","ingredients": [{"ingredientName": "nombre del ingrediente","calories": "calorias del ingrediente","proteins": "proteinas del ingrediente","carbs": "carbohidratos del ingrediente","fats": "grasas del ingrediente"}],"totalNutritionalValues": {"calories": "calorias totales de la receta","proteins": "proteinas totales de la receta","carbs": "carbohidratos totales de la receta","fats": "grasas totales de la receta"}}]} No pongas cosas como GR, KG, etc, solo el número. Ejemplo: 1, 2, 3, etc.`;
+        Preferencias dietéticas: ${user.dieteticPreferences}
+        Limitaciones médicas: ${user.medicLimitations}
+        Experiencia en ejercicio: ${user.fitnessExperience}
+
+        Considera el gasto energético total con el metabolismo basal y el nivel de actividad física.
+
+        El plan de dietas tienes que dividirlo en un json de una sola línea, así:{"name": "nombre del plan de dieta","description": "pequeña descripción de la receta","recipes": [{"recipeName": "nombre de la receta","ingredients": [{"ingredientName": "nombre del ingrediente","calories": "calorias del ingrediente","proteins": "proteinas del ingrediente","carbs": "carbohidratos del ingrediente","fats": "grasas del ingrediente"}],"totalNutritionalValues": {"calories": "calorias totales de la receta","proteins": "proteinas totales de la receta","carbs": "carbohidratos totales de la receta","fats": "grasas totales de la receta"}}]} No pongas cosas como GR, KG, etc, solo el número. Ejemplo: 1, 2, 3, etc.`;
 
         const response = await openai.completions.create({
             model: 'gpt-3.5-turbo-instruct',
             prompt: prompt,
             temperature: 1,
-            max_tokens: 3500,
+            max_tokens: 3000,
             top_p: 1,
             frequency_penalty: 0,
             presence_penalty: 0,

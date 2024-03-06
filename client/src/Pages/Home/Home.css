@@ -1,0 +1,218 @@
+.landingPage_topSection {
+    width: 100%;
+    height: 65vh;
+    clip-path: polygon(0 0, 100% 0, 100% 70%, 0% 100%);
+
+    background: linear-gradient(270deg, #f67b2d, #f2ac3e, #986C27);
+    background-size: 800% 800%;
+
+    -webkit-animation: GradientAnimation 30s ease infinite;
+    -moz-animation: GradientAnimation 30s ease infinite;
+    animation: GradientAnimation 30s ease infinite;
+}
+
+@-webkit-keyframes GradientAnimation {
+    0% {
+        background-position: 0% 50%
+    }
+
+    50% {
+        background-position: 100% 50%
+    }
+
+    100% {
+        background-position: 0% 50%
+    }
+}
+
+@-moz-keyframes GradientAnimation {
+    0% {
+        background-position: 0% 50%
+    }
+
+    50% {
+        background-position: 100% 50%
+    }
+
+    100% {
+        background-position: 0% 50%
+    }
+}
+
+@keyframes GradientAnimation {
+    0% {
+        background-position: 0% 50%
+    }
+
+    50% {
+        background-position: 100% 50%
+    }
+
+    100% {
+        background-position: 0% 50%
+    }
+}
+
+.landingPage_fullContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 100px;
+}
+
+.landingPage_firstSection_container {
+    width: 1100px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.landingPage_firstSection_containerDescription {
+    display: flex;
+    flex-direction: column;
+}
+
+.landingPage_firstSection_containerDescriptionTitle {
+    color: var(--primary-color-50);
+    font-size: 90px;
+    font-weight: 800;
+    margin-bottom: 30px;
+}
+
+.landingPage_firstSection_containerDescriptionIntroduction {
+    font-weight: 600;
+    font-size: 18px;
+    text-wrap: balance;
+    margin-bottom: 10px;
+}
+
+.landingPage_firstSection_containerDescriptionInteraction {
+    display: flex;
+    align-items: center;
+}
+
+.landingPage_firstSection_containerDescriptionInteractionText {
+    font-weight: 500;
+    font-size: 16px;
+    margin-right: 5px;
+}
+
+.landingPage_firstSection_containerDescriptionInteractionButton {
+    padding: 7px 15px;
+
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--primary-color-50);
+    background: linear-gradient(270deg, #f67b2d, #f2ac3e, #986C27);
+    background-size: 800% 800%;
+
+    -webkit-animation: GradientAnimation 30s ease infinite;
+    -moz-animation: GradientAnimation 30s ease infinite;
+    animation: GradientAnimation 30s ease infinite;
+
+    border-radius: 5px;
+
+    transition: 400ms;
+
+    transition: 400ms;
+}
+
+.landingPage_firstSection_containerDescriptionInteractionButton:hover {
+    padding: 7px 18px;
+    opacity: 0.8;
+}
+
+.landingPage_secondSection_container {
+    width: 1100px;
+    margin-top: 100px;
+    margin-bottom: 100px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.landingPage_secondSection_containerDescription {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+
+    gap: 10px;
+}
+
+.landingPage_secondSection_containerDescriptionTitle {
+    color: var(--primary-color-900);
+    font-size: 70px;
+    font-weight: 800;
+}
+
+.landingPage_secondSection_containerDescriptionIntroduction {
+    color: var(--primary-color-800);
+    font-weight: 600;
+    font-size: 18px;
+    text-wrap: balance;
+    margin-bottom: 10px;
+}
+
+.landingPage_secondSection_containerBento {
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    text-align: center;
+    justify-content: space-between;
+}
+
+.landingPage_secondSection_containerBentoCard {
+    width: 350px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(270deg, #f67b2d, #f2ac3e, #986C27);
+    background-size: 800% 800%;
+
+    -webkit-animation: GradientAnimation 30s ease infinite;
+    -moz-animation: GradientAnimation 30s ease infinite;
+    animation: GradientAnimation 30s ease infinite;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    transition: 400ms ease;
+}
+
+.landingPage_secondSection_containerBentoCard:hover {
+    opacity: 0.8;
+}
+
+.landingPage_secondSection_containerBentoCardTitle {
+    color: var(--primary-color-50);
+    font-size: 24px;
+    font-weight: 800;
+}
+
+.landingPage_secondSection_containerBentoCardDescription {
+    color: var(--primary-color-50);
+    font-size: 16px;
+    text-wrap: balance;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+.landingPage_secondSection_containerBentoCardIcon {
+    width: 200px;
+    padding: 20px;
+    margin: 0 auto;
+    fill: var(--primary-color-800);
+}

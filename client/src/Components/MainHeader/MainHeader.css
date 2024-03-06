@@ -1,0 +1,106 @@
+.landingHeader {
+    z-index: 999;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: 400ms;
+}
+
+.landingHeader.scrolled {
+    background-color: var(--primary-color-50);
+}
+
+.landingHeader_link.scrolled,
+.landingHeader_linkLogoText.scrolled,
+.landingHeader_buttonLogin.scrolled,
+.landingHeader_buttonSignup.scrolled {
+    color: var(--primary-color-900);
+}
+
+.landingHeaderContainer {
+    background-color: transparent;
+    padding: 10px 20px 10px;
+    max-width: 1100px;
+    width: 100%;
+    box-sizing: border-box;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.landingHeader_linkLogoText {
+    color: var(--primary-color-50);
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: 3px;
+
+    transition: 400ms;
+}
+
+.landingHeader_linkLogoText:hover {
+    color: var(--primary-color-700);
+}
+
+.landingHeader_links {
+    width: 550px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.landingHeader_link {
+    font-style: 20px;
+    font-weight: 600;
+    color: var(--primary-color-50);
+
+    transition: 400ms;
+}
+
+.landingHeader_link:hover {
+    color: var(--primary-color-700);
+}
+
+
+.landingHeader_buttons {
+    width: 270px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.landingHeader_buttonLogin {
+    font-style: 20px;
+    font-weight: 600;
+    color: var(--primary-color-50);
+
+    transition: 400ms;
+}
+
+.landingHeader_buttonLogin:hover {
+    opacity: 0.8;
+}
+
+.landingHeader_buttonSignup {
+    padding: 7px 15px;
+
+    font-style: 20px;
+    font-weight: 600;
+    color: var(--primary-color-50);
+    background-color: rgba(64, 22, 0, 0.5);
+
+    border-radius: 5px;
+
+    transition: 400ms;
+}
+
+.landingHeader_buttonSignup:hover {
+    opacity: 0.8;
+}
