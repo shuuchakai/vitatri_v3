@@ -17,7 +17,7 @@ const userSchema = new Schema({
         trim: true,
         required: true
     },
-    gender: {
+    biologicalSex: {
         type: String,
         required: true
     },
