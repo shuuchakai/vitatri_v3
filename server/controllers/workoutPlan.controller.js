@@ -4,7 +4,7 @@ import User from '../models/user.model.js';
 import WorkoutPlan from '../models/workoutPlan.model.js';
 
 const openai = new OpenAI({
-    apiKey: process.env.OPENAI_API_KEY || "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",
+    apiKey: process.env.OPENAI_API_KEY,
 });
 
 const createWorkoutPlan = async (req, res) => {
