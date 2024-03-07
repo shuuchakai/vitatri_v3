@@ -1,106 +1,116 @@
-.landingHeader {
-    z-index: 999;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
+.header_container {
+    text-align: center;
+}
+
+.header_containerContent {
+    width: 1100px;
+    height: 45px;
+    margin-top: 30px;
 
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
-
-    transition: 400ms;
+    padding: 20px 0;
 }
 
-.landingHeader.scrolled {
-    background-color: var(--primary-color-50);
+.header_containerContentLeft {
+    width: 505px;
+
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: space-between;
 }
 
-.landingHeader_link.scrolled,
-.landingHeader_linkLogoText.scrolled,
-.landingHeader_buttonLogin.scrolled,
-.landingHeader_buttonSignup.scrolled {
-    color: var(--primary-color-900);
+.header_containerContentLeft_logoContainerContent {
+    padding: 13px 20px;
+
+    font-weight: 900;
+    font-size: 24px;
+
+    color: var(--secondary-color);
+    /* background: linear-gradient(to bottom right, rgba(32, 73, 72, 1), rgba(246, 123, 45, 1));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; */
+
+    transition: 300ms ease-in-out;
 }
 
-.landingHeaderContainer {
-    background-color: transparent;
-    padding: 10px 20px 10px;
-    max-width: 1100px;
+.header_containerContentLeft_logoContainerContent:hover {
+    /* opacity: 0.8; */
+    color: var(--primary-color);
+}
+
+.header_containerContentLeft_linksContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header_containerContentLeft_linksContainer_link {
+    padding: 13px 20px;
+
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+
+    transition: 300ms ease-in-out;
+}
+
+.header_containerContentLeft_linksContainer_link:hover {
+    color: var(--primary-color)
+}
+
+.header_containerContentRight {
+    width: 280px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header_containerContentRight_buttonsContainer {
     width: 100%;
-    box-sizing: border-box;
 
     display: flex;
-    align-items: center;
     justify-content: space-between;
-}
-
-.landingHeader_linkLogoText {
-    color: var(--primary-color-50);
-    font-size: 26px;
-    font-weight: 800;
-    letter-spacing: 3px;
-
-    transition: 400ms;
-}
-
-.landingHeader_linkLogoText:hover {
-    color: var(--primary-color-700);
-}
-
-.landingHeader_links {
-    width: 550px;
-    display: flex;
     align-items: center;
-    justify-content: space-between;
 }
 
-.landingHeader_link {
-    font-style: 20px;
-    font-weight: 600;
-    color: var(--primary-color-50);
+.header_containerContentRight_buttonsContainer_buttonLogin {
+    padding: 13px 19px;
 
-    transition: 400ms;
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+
+    border: 1px solid var(--secondary-color);
+    border-radius: 4px;
+
+    transition: 300ms ease-in-out;
 }
 
-.landingHeader_link:hover {
-    color: var(--primary-color-700);
+.header_containerContentRight_buttonsContainer_buttonLogin:hover {
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
 }
 
+.header_containerContentRight_buttonsContainer_buttonSignup {
+    padding: 13px 20px;
 
-.landingHeader_buttons {
-    width: 270px;
+    color: var(--background-color);
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
 
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    border-radius: 4px;
+    border: none;
+    background-color: var(--secondary-color);
+
+    transition: 300ms ease-in-out;
 }
 
-.landingHeader_buttonLogin {
-    font-style: 20px;
-    font-weight: 600;
-    color: var(--primary-color-50);
-
-    transition: 400ms;
-}
-
-.landingHeader_buttonLogin:hover {
-    opacity: 0.8;
-}
-
-.landingHeader_buttonSignup {
-    padding: 7px 15px;
-
-    font-style: 20px;
-    font-weight: 600;
-    color: var(--primary-color-50);
-    background-color: rgba(64, 22, 0, 0.5);
-
-    border-radius: 5px;
-
-    transition: 400ms;
-}
-
-.landingHeader_buttonSignup:hover {
-    opacity: 0.8;
+.header_containerContentRight_buttonsContainer_buttonSignup:hover {
+    background-color: var(--primary-color);
 }

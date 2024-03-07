@@ -1,38 +1,30 @@
-import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import './MainHeader.css';
 
 function MainHeader() {
-    const [scrolled, setScrolled] = useState(false);
-
-    useEffect(() => {
-        const handleScroll = () => {
-            setScrolled(window.pageYOffset > 0);
-        };
-
-        window.addEventListener('scroll', handleScroll);
-
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, []);
     return (
-        <header className={`landingHeader ${scrolled ? 'scrolled' : ''}`}>
-            <div className="landingHeaderContainer">
-                <div className="landingHeader_links">
-                    <Link className={`landingHeader_linkLogoText ${scrolled ? 'scrolled' : ''}`} to="/">vitatri</Link>
-                    <Link className={`landingHeader_link ${scrolled ? 'scrolled' : ''}`} to="/">Blog</Link>
-                    <Link className={`landingHeader_link ${scrolled ? 'scrolled' : ''}`} to="/us">Sobre Nosotros</Link>
-                    <Link className={`landingHeader_link ${scrolled ? 'scrolled' : ''}`} to="/faq">Preguntas Frecuentes</Link>
+        <header className="header_container">
+            <nav className="header_containerContent">
+                <div className="header_containerContentLeft">
+                    <Link className="header_containerContentLeft_logoContainer">
+                        <p className="header_containerContentLeft_logoContainerContent">vitatri</p>
+                    </Link>
+                    <nav className="header_containerContentLeft_linksContainer">
+                        <Link to="/blog" className="header_containerContentLeft_linksContainer_link">Blog</Link>
+                        <Link to="/contact" className="header_containerContentLeft_linksContainer_link">Sobre Nosotros</Link>
+                        <Link to="/faq" className="header_containerContentLeft_linksContainer_link">Preguntas Frecuentes</Link>
+                    </nav>
                 </div>
-                <div className="landingHeader_buttons">
-                    <Link className={`landingHeader_buttonLogin ${scrolled ? 'scrolled' : ''}`} to="/register">Crear Cuenta</Link>
-                    <Link className={`landingHeader_buttonSignup ${scrolled ? 'scrolled' : ''}`} to="/login">Iniciar Sesión</Link>
+                <div className="header_containerContentRight">
+                    <nav className="header_containerContentRight_buttonsContainer">
+                        <Link to="/login" className="header_containerContentRight_buttonsContainer_buttonLogin">Iniciar Sesión</Link>
+                        <Link to="/signup" className="header_containerContentRight_buttonsContainer_buttonSignup">Empieza ahora<span></span></Link>
+                    </nav>
                 </div>
-            </div>
+            </nav>
         </header>
     )
 }
 
-export default MainHeader;
+export default MainHeader
