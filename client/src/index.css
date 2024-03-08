@@ -4,7 +4,7 @@
     --primary-color: #F67B2D;
     --secondary-color: #204948;
     --tertiary-color: #4DAFAD;
-    --background-color: #F0F0F0;
+    --background-color: #F9F8F1;
 
     --accent-color-error: #D92121;
     --accent-color-success: #28EA55;
@@ -30,14 +30,5 @@
 
 html,
 body {
-    height: 100vh;
-
-    margin: 0;
-    padding: 0;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
     background-color: var(--background-color);
 }
