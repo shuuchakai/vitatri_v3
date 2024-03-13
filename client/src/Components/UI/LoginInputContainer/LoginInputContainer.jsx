@@ -22,6 +22,7 @@ function LoginInputContainer({ labelText, inputType }) {
         setInputValue(event.target.value);
     }
 
+
     return (
         <div className="login_containerCard_inputContainer">
             <p className="login_containerCard_inputContainer_title">{labelText}</p>
