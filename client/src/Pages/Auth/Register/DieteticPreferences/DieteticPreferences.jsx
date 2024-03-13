@@ -1,9 +1,28 @@
+import { useState, useCallback, memo } from 'react';
+
 function DieteticPreferences({ nextStep, prevStep, handleChange, values }) {
+    const [error, setError] = useState(null);
+
+    const validateInput = useCallback((value) => {
+        if (!value) {
+            setError("Por favor, selecciona alguna preferencia dietética.");
+            return false;
+        }
+        setError(null);
+        return true;
+    }, []);
+
+    const handleDietChange = useCallback((event) => {
+        if (validateInput(event.target.value)) {
+            handleChange('dieteticPreferences')(event);
+        }
+    }, [handleChange, validateInput]);
+
     return (
         <form>
             <div>
                 <label>¿Tienes alguna preferencia dietética?</label>
-                <select onChange={handleChange} value={values.dieteticPreferences} required>
+                <select aria-label="Preferencia dietética" onChange={handleDietChange} value={values.dieteticPreferences} required>
                     <option value="" disabled>Selecciona alguna preferencia dietética</option>
                     <option value="Vegana">Vegana</option>
                     <option value="Vegetariana">Vegetariana</option>
@@ -26,11 +45,12 @@ function DieteticPreferences({ nextStep, prevStep, handleChange, values }) {
                     <option value="Sin carne de cordero">Sin carne de cordero</option>
                     <option value="Sin carne de conejo">Sin carne de conejo</option>
                 </select>
+                {error && <p>{error}</p>}
             </div>
-            <button onClick={prevStep}>Atrás</button>
-            <button onClick={nextStep}>Siguiente</button>
+            <button type="button" onClick={prevStep}>Atrás</button>
+            <button type="button" onClick={nextStep}>Siguiente</button>
         </form>
     )
 }
 
-export default DieteticPreferences
+export default memo(DieteticPreferences);

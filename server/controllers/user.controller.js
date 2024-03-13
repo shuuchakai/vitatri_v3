@@ -32,7 +32,8 @@ const register = async (req, res) => {
             { expiresIn: 360000 },
             (err, token) => {
                 if (err) throw err;
-                res.json({ token, user });
+                res.cookie('token', token, { httpOnly: true, sameSite: 'strict' }); // Establecer el token en una cookie HTTP Only
+                res.json({ user });
             }
         );
     } catch (err) {
@@ -69,7 +70,8 @@ const login = async (req, res) => {
             { expiresIn: 360000 },
             (err, token) => {
                 if (err) throw err;
-                res.json({ token });
+                res.cookie('token', token, { httpOnly: true, sameSite: 'strict' }); // Establecer el token en una cookie HTTP Only
+                res.json({ user });
             }
         );
     } catch (err) {

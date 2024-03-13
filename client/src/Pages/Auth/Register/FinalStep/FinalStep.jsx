@@ -1,26 +1,16 @@
-import React from 'react';
+import React, { useCallback, memo } from 'react';
+import axios from 'axios';
 
 function FinalStep({ prevStep, userData }) {
-    const handleSubmit = async () => {
+    const handleSubmit = useCallback(async () => {
         try {
-            const response = await fetch('https://tu-api.com/endpoint', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(userData)
-            });
+            const response = await axios.post('https://tu-api.com/endpoint', userData, { withCredentials: true });
 
-            if (!response.ok) {
-                throw new Error('Hubo un problema al enviar los datos');
-            }
-
-            const data = await response.json();
-            console.log(data);
+            console.log(response.data);
         } catch (error) {
             console.error(error);
         }
-    }
+    }, [userData]);
 
     return (
         <div>
@@ -31,4 +21,4 @@ function FinalStep({ prevStep, userData }) {
     )
 }
 
-export default FinalStep;
+export default memo(FinalStep);

@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 import express from 'express';
 import dotenv from 'dotenv';
+import cookieParser from 'cookie-parser';
 import morgan from 'morgan';
 import cors from 'cors';
 import helmet from 'helmet';
@@ -28,6 +29,7 @@ app.use(limiter);
 app.use(cors());
 app.use(morgan('dev'));
 app.use(express.json());
+app.use(cookieParser());
 app.disable('x-powered-by');
 
 app.get('/', (req, res) => {

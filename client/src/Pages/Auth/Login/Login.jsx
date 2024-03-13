@@ -1,27 +1,38 @@
-import { Link } from 'react-router-dom';
+import { useState, useCallback } from 'react';
+import axios from 'axios';
 
-import LoginInputContainer from '../../../Components/UI/LoginInputContainer/LoginInputContainer';
-
-import './Login.css';
+axios.defaults.withCredentials = true;
 
 function Login() {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    const handleEmailChange = useCallback((event) => {
+        setEmail(event.target.value);
+    }, []);
+
+    const handlePasswordChange = useCallback((event) => {
+        setPassword(event.target.value);
+    }, []);
+
+    const handleSubmit = useCallback(async (event) => {
+        event.preventDefault();
+
+        try {
+            await axios.post('/api/users/login', { email, password });
+
+            // Redirección del usuario
+        } catch (error) {
+            console.error(error);
+        }
+    }, [email, password]);
+
     return (
-        <>
-            <section className="login_container">
-                <Link className="login_containerLogo" to="/">vitatri</Link>
-                <div className="login_containerCard">
-                    <p className="login_containerCard_title">Iniciar Sesión</p>
-                    <form className="login_containerCard_form">
-                        <div className="login_containerCard_formContainer">
-                            <LoginInputContainer labelText="Correo Electrónico:" inputType="text" />
-                            <LoginInputContainer labelText="Contraseña:" inputType="password" />
-                        </div>
-                        <button className="login_containerCard_button">Iniciar Sesión</button>
-                    </form>
-                    <p className="login_containerCard_already">¿Aún no tienes cuenta? <Link className="login_containerCard_alreadySpan" to="/register">Crea una</Link></p>
-                </div>
-            </section>
-        </>
+        <form onSubmit={handleSubmit}>
+            <input type="email" value={email} onChange={handleEmailChange} placeholder="Correo electrónico" required />
+            <input type="password" value={password} onChange={handlePasswordChange} placeholder="Contraseña" required />
+            <button type="submit">Iniciar sesión</button>
+        </form>
     );
 }
 

@@ -1,18 +1,30 @@
-import { useState } from 'react';
+import { useState, useCallback, memo } from 'react';
 
 function MedicLimitations({ nextStep, prevStep, handleChange, values }) {
     const [otherSelected, setOtherSelected] = useState(false);
+    const [error, setError] = useState(null);
 
-    const handleLimitationChange = (event) => {
-        handleChange('medicLimitations')(event);
-        setOtherSelected(event.target.value === 'Otro');
-    }
+    const validateInput = useCallback((value) => {
+        if (!value) {
+            setError("Por favor, selecciona alguna limitación médica.");
+            return false;
+        }
+        setError(null);
+        return true;
+    }, []);
+
+    const handleLimitationChange = useCallback((event) => {
+        if (validateInput(event.target.value)) {
+            handleChange('medicLimitations')(event);
+            setOtherSelected(event.target.value === 'Otro');
+        }
+    }, [handleChange, validateInput]);
 
     return (
         <form>
             <div>
                 <label>¿Tienes alguna limitación médica?</label>
-                <select onChange={handleLimitationChange} value={values.medicLimitations} required>
+                <select aria-label="Limitación médica" onChange={handleLimitationChange} value={values.medicLimitations} required>
                     <option value="" disabled>Selecciona alguna limitación médica</option>
                     <option value="Diabetes">Diabetes</option>
                     <option value="Hipertensión">Hipertensión</option>
@@ -29,7 +41,8 @@ function MedicLimitations({ nextStep, prevStep, handleChange, values }) {
                     <option value="Enfermedad neurológica">Enfermedad neurológica</option>
                     <option value="Otro">Otro</option>
                 </select>
-                <select onChange={handleChange} value={values.blodType} required>
+                {error && <p>{error}</p>}
+                <select aria-label="Tipo de sangre" onChange={handleChange('bloodType')} value={values.bloodType} required>
                     <option value="" disabled>Selecciona tu tipo de sangre</option>
                     <option value="A+">A+</option>
                     <option value="A-">A-</option>
@@ -44,13 +57,13 @@ function MedicLimitations({ nextStep, prevStep, handleChange, values }) {
             {otherSelected && (
                 <div>
                     <label>Especifica la limitación médica</label>
-                    <input type="text" onChange={handleChange('medicLimitation')} value={values.otherMedicLimitation} required />
+                    <input aria-label="Otra limitación médica" type="text" onChange={handleChange('medicLimitation')} value={values.otherMedicLimitation} required />
                 </div>
             )}
-            <button onClick={prevStep}>Atrás</button>
-            <button onClick={nextStep}>Siguiente</button>
+            <button type="button" onClick={prevStep}>Atrás</button>
+            <button type="button" onClick={nextStep}>Siguiente</button>
         </form>
     )
 }
 
-export default MedicLimitations;
+export default memo(MedicLimitations);

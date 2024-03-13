@@ -1,3 +1,4 @@
+import { useCallback, memo } from 'react';
 import { z } from 'zod';
 
 const formSchema = z.object({
@@ -8,28 +9,34 @@ const formSchema = z.object({
 });
 
 function BasicInfo({ nextStep, handleChange, values, errors, setErrors }) {
-    const validateForm = (field, value) => {
+    const validateForm = useCallback((field, value) => {
         try {
             formSchema.parse({ ...values, [field]: value });
             setErrors({ ...errors, [field]: null });
         } catch (error) {
             setErrors({ ...errors, [field]: error.message });
         }
-    };
+    }, [values, errors, setErrors]);
+
+    const handleInputChange = useCallback((field) => (event) => {
+        const value = event.target.value;
+        handleChange(field)(event);
+        validateForm(field, value);
+    }, [handleChange, validateForm]);
 
     return (
         <form>
-            <input type="text" placeholder="Nombre o apodo" onChange={(e) => { handleChange("name")(e); validateForm('name', e.target.value); }} value={values.name} />
+            <input aria-label="Nombre o apodo" type="text" placeholder="Nombre o apodo" onChange={handleInputChange("name")} value={values.name} />
             <p>{errors.name}</p>
-            <input type="text" placeholder="Correo Electrónico" onChange={(e) => { handleChange("email")(e); validateForm('email', e.target.value); }} value={values.email} />
+            <input aria-label="Correo Electrónico" type="text" placeholder="Correo Electrónico" onChange={handleInputChange("email")} value={values.email} />
             <p>{errors.email}</p>
-            <input type="password" placeholder="Contraseña" onChange={(e) => { handleChange("password")(e); validateForm('password', e.target.value); }} value={values.password} />
+            <input aria-label="Contraseña" type="password" placeholder="Contraseña" onChange={handleInputChange("password")} value={values.password} />
             <p>{errors.password}</p>
-            <input type="date" placeholder="Fecha de Nacimiento" onChange={(e) => { handleChange("dateOfBirth")(e); validateForm('dateOfBirth', e.target.value); }} value={values.dateOfBirth} />
+            <input aria-label="Fecha de Nacimiento" type="date" placeholder="Fecha de Nacimiento" onChange={handleInputChange("dateOfBirth")} value={values.dateOfBirth} />
             <p>{errors.dateOfBirth}</p>
             <button type="button" onClick={nextStep}>Siguiente</button>
         </form>
     )
 }
 
-export default BasicInfo;
+export default memo(BasicInfo);

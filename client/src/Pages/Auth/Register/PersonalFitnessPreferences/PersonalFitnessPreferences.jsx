@@ -1,18 +1,30 @@
-import { useState } from "react";
+import { useState, useCallback, memo } from 'react';
 
 function PersonalFitnessPreferences({ nextStep, prevStep, handleChange, values }) {
     const [otherSelected, setOtherSelected] = useState(false);
+    const [error, setError] = useState(null);
 
-    const handleFitnessPreferenceChange = (event) => {
-        handleChange('personalFitnessPreferences')(event);
-        setOtherSelected(event.target.value === 'Otro');
-    }
+    const validateInput = useCallback((value) => {
+        if (!value) {
+            setError("Por favor, selecciona alguna preferencia de entrenamiento.");
+            return false;
+        }
+        setError(null);
+        return true;
+    }, []);
+
+    const handleFitnessPreferenceChange = useCallback((event) => {
+        if (validateInput(event.target.value)) {
+            handleChange('personalFitnessPreferences')(event);
+            setOtherSelected(event.target.value === 'Otro');
+        }
+    }, [handleChange, validateInput]);
 
     return (
         <form>
             <div>
                 <label>¿Tienes alguna preferencia de entrenamiento?</label>
-                <select multiple onChange={handleChange} value={values.personalFitnessPreferences} required>
+                <select aria-label="Preferencia de entrenamiento" multiple onChange={handleFitnessPreferenceChange} value={values.personalFitnessPreferences} required>
                     <option value="" disabled>Selecciona alguna preferencia de entrenamiento</option>
                     <option value="Entrenamiento en casa">Entrenamiento en casa</option>
                     <option value="Entrenamiento en gimnasio">Entrenamiento en gimnasio</option>
@@ -42,17 +54,18 @@ function PersonalFitnessPreferences({ nextStep, prevStep, handleChange, values }
                     <option value="Entrenamiento con barra">Entrenamiento con barra</option>
                     <option value="Otro">Otro</option>
                 </select>
+                {error && <p>{error}</p>}
             </div>
             {otherSelected && (
                 <div>
                     <label>Especifica la preferencia de entrenamiento</label>
-                    <input type="text" onChange={handleChange('personalFitnessPreference')} value={values.otherPersonalFitnessPreference} required />
+                    <input aria-label="Otra preferencia de entrenamiento" type="text" onChange={handleChange('personalFitnessPreference')} value={values.otherPersonalFitnessPreference} required />
                 </div>
             )}
-            <button onClick={prevStep}>Atrás</button>
-            <button onClick={nextStep}>Siguiente</button>
+            <button type="button" onClick={prevStep}>Atrás</button>
+            <button type="button" onClick={nextStep}>Siguiente</button>
         </form>
     )
 }
 
-export default PersonalFitnessPreferences
+export default memo(PersonalFitnessPreferences);

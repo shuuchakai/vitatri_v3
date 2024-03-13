@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useCallback, memo } from 'react';
 
 import BasicInfo from './BasicInfo/BasicInfo';
 import BiologicalSex from './BiologicalSex/BiologicalSex';
@@ -27,16 +27,17 @@ function Register() {
         bloodType: '',
     });
 
-    const nextStep = () => {
+    const nextStep = useCallback(() => {
         setCurrentStep(currentStep + 1);
-    };
-    const prevStep = () => {
-        setCurrentStep(currentStep - 1);
-    };
+    }, [currentStep]);
 
-    const handleChange = (input) => (e) => {
+    const prevStep = useCallback(() => {
+        setCurrentStep(currentStep - 1);
+    }, [currentStep]);
+
+    const handleChange = useCallback((input) => (e) => {
         setUserData({ ...userData, [input]: e.target.value });
-    }
+    }, [userData]);
 
     switch (currentStep) {
         case 1:
@@ -57,4 +58,4 @@ function Register() {
 
 }
 
-export default Register
+export default memo(Register);

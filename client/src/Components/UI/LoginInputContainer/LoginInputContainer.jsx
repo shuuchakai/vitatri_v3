@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback, memo } from 'react';
+import PropTypes from 'prop-types';
 
 import './LoginInputContainer.css';
 
@@ -6,27 +7,31 @@ function LoginInputContainer({ labelText, inputType }) {
     const [inputValue, setInputValue] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
 
-    useEffect(() => {
-        validateInput(inputValue);
-    }, [inputValue]);
-
-    const validateInput = (value) => {
-        if (value === '') {
+    const validateInput = useCallback((value) => {
+        if (value.trim() === '') {
             setErrorMessage('Este campo es obligatorio');
         } else {
             setErrorMessage('');
         }
-    }
+    }, []);
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            validateInput(inputValue);
+        }, 300);
+
+        return () => clearTimeout(timer);
+    }, [inputValue, validateInput]);
 
     const handleInputChange = (event) => {
         setInputValue(event.target.value);
     }
 
-
     return (
         <div className="login_containerCard_inputContainer">
             <p className="login_containerCard_inputContainer_title">{labelText}</p>
             <input
+                aria-label={labelText}
                 className="login_containerCard_inputContainer_input"
                 type={inputType}
                 value={inputValue}
@@ -37,4 +42,9 @@ function LoginInputContainer({ labelText, inputType }) {
     )
 }
 
-export default LoginInputContainer;
+LoginInputContainer.propTypes = {
+    labelText: PropTypes.string.isRequired,
+    inputType: PropTypes.string.isRequired,
+};
+
+export default memo(LoginInputContainer);
