@@ -12,6 +12,22 @@
     --font-family: 'Montserrat', sans-serif;
 }
 
+#root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+
+::selection {
+    background-color: rgba(246, 123, 45, 0.6);
+    color: var(--background-color);
+}
+
+::-webkit-selection {
+    background-color: rgba(246, 123, 45, 0.6);
+    color: var(--background-color);
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -30,5 +46,7 @@
 
 html,
 body {
+    height: 100%;
+    margin: 0;
     background-color: var(--background-color);
 }

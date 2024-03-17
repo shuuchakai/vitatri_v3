@@ -1,38 +1,50 @@
-import { useState, useCallback } from 'react';
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+
+import LoginInputContainer from '../../../Components/UI/LoginInputContainer/LoginInputContainer';
+import ButtonInput from '../../../Components/UI/ButtonInput/ButtonInput';
+
+import './Login.css';
 
 axios.defaults.withCredentials = true;
 
 function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const navigate = useNavigate();
 
-    const handleEmailChange = useCallback((event) => {
-        setEmail(event.target.value);
-    }, []);
-
-    const handlePasswordChange = useCallback((event) => {
-        setPassword(event.target.value);
-    }, []);
-
-    const handleSubmit = useCallback(async (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
 
         try {
             await axios.post('/api/users/login', { email, password });
 
-            // Redirección del usuario
+            navigate('/home');
         } catch (error) {
-            console.error(error);
+            alert('Error al iniciar sesión. Por favor, inténtelo de nuevo.');
         }
-    }, [email, password]);
+    };
+
+    const handleEmailChange = (newEmail) => {
+        setEmail(newEmail);
+    };
+
+    const handlePasswordChange = (newPassword) => {
+        setPassword(newPassword);
+    };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <input type="email" value={email} onChange={handleEmailChange} placeholder="Correo electrónico" required />
-            <input type="password" value={password} onChange={handlePasswordChange} placeholder="Contraseña" required />
-            <button type="submit">Iniciar sesión</button>
-        </form>
+        <>
+            <div className="login_container">
+                <Link to="/" className="login_containerLogo">vitatri</Link>
+                <form className="login_containerCard" onSubmit={handleSubmit}>
+                    <LoginInputContainer onInputChange={handleEmailChange} inputType="text" labelText="Correo Electrónico" />
+                    <LoginInputContainer onInputChange={handlePasswordChange} inputType="password" labelText="Contraseña" />
+                    <ButtonInput buttonType="submit" buttonContent="Iniciar Sesión" />
+                </form>
+            </div>
+        </>
     );
 }
 
