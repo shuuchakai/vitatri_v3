@@ -49,6 +49,7 @@ function Homepage() {
                     </div>
                 </section>
                 <section className="homepage_thirdSectionContainer"></section>
+                <section className="homepage_fourthSectionContainer"></section>
             </main>
             <MainFooter />
         </>

@@ -1,7 +1,7 @@
 import { Route, Redirect } from 'react-router-dom';
 import axios from 'axios';
 
-axios.defaults.withCredentials = true; // Configurar axios para enviar cookies
+axios.defaults.withCredentials = true;
 
 const ProtectedRoute = ({ component: Component, ...rest }) => {
     const [isLoading, setIsLoading] = useState(true);
@@ -10,7 +10,7 @@ const ProtectedRoute = ({ component: Component, ...rest }) => {
     useEffect(() => {
         const checkAuthentication = async () => {
             try {
-                await axios.get('/api/users/get'); // Endpoint que devuelve los datos del usuario si está autenticado
+                await axios.get('/api/users/get');
                 setIsAuthenticated(true);
             } catch (error) {
                 setIsAuthenticated(false);
@@ -23,7 +23,7 @@ const ProtectedRoute = ({ component: Component, ...rest }) => {
     }, []);
 
     if (isLoading) {
-        return <div>Cargando...</div>; // Renderizar un componente de carga mientras se verifica la autenticación
+        return <div>Cargando...</div>;
     }
 
     return (
@@ -33,7 +33,7 @@ const ProtectedRoute = ({ component: Component, ...rest }) => {
                 isAuthenticated ? (
                     <Component {...props} />
                 ) : (
-                    <Redirect to="/login" /> // Redirigir al usuario a la página de inicio de sesión si no está autenticado
+                    <Redirect to="/login" />
                 )
             }
         />

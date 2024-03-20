@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
 
 const auth = async (req, res, next) => {
-    const token = req.cookies.token; // Obtener el token de las cookies
+    const token = req.cookies.token;
 
     if (!token) {
         return res.status(401).json({ msg: 'No hay token, autorización denegada' });
@@ -15,6 +15,6 @@ const auth = async (req, res, next) => {
     } catch (err) {
         res.status(401).json({ msg: 'Token no válido' });
     }
-};
+};w
 
 export default auth;

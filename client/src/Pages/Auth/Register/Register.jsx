@@ -1,61 +1,74 @@
-import { useState, useCallback, memo } from 'react';
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
-import BasicInfo from './BasicInfo/BasicInfo';
-import BiologicalSex from './BiologicalSex/BiologicalSex';
-import HealthGeneralInformation from './HealthGeneralInformation/HealthGeneralInformation';
-import MedicLimitations from './MedicLimitations/MedicLimitations';
-import PersonalFitnessPreferences from './PersonalFitnessPreferences/PersonalFitnessPreferences';
-import DieteticPreferences from './DieteticPreferences/DieteticPreferences';
-import FinalStep from './FinalStep/FinalStep';
+import RegisterInputContainer from '../../../Components/UI/RegisterInputContainer/RegisterInputContainer';
+import ButtonInput from '../../../Components/UI/ButtonInput/ButtonInput';
+import CustomAlert from '../../../Components/UI/CustomAlert/CustomAlert';
+
+import './Register.css';
+
+axios.defaults.withCredentials = true;
 
 function Register() {
-    const [errors, setErrors] = useState({});
-    const [currentStep, setCurrentStep] = useState(1);
-    const [userData, setUserData] = useState({
-        name: '',
-        email: '',
-        password: '',
-        dateOfBirth: '',
-        biologicalSex: '',
-        height: '',
-        weight: '',
-        mainGoal: '',
-        medicLimitations: [],
-        personalFitnessPreferences: [],
-        fitnessExperience: '',
-        dieteticPreferences: [],
-        bloodType: '',
-    });
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [birthDate, setBirthDate] = useState('');
+    const [showErrors, setShowErrors] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
 
-    const nextStep = useCallback(() => {
-        setCurrentStep(currentStep + 1);
-    }, [currentStep]);
+    const navigate = useNavigate();
 
-    const prevStep = useCallback(() => {
-        setCurrentStep(currentStep - 1);
-    }, [currentStep]);
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        setShowErrors(true);
 
-    const handleChange = useCallback((input) => (e) => {
-        setUserData({ ...userData, [input]: e.target.value });
-    }, [userData]);
+        try {
+            await axios.post('/api/users/register', { name, email, password, birthDate });
 
-    switch (currentStep) {
-        case 1:
-            return <BasicInfo nextStep={nextStep} handleChange={handleChange} values={userData} errors={errors} setErrors={setErrors} />
-        case 2:
-            return <BiologicalSex nextStep={nextStep} prevStep={prevStep} handleChange={handleChange} values={userData} />
-        case 3:
-            return <HealthGeneralInformation nextStep={nextStep} handleChange={handleChange} values={userData} errors={errors} setErrors={setErrors} />
-        case 4:
-            return <MedicLimitations nextStep={nextStep} prevStep={prevStep} handleChange={handleChange} values={userData} />
-        case 5:
-            return <PersonalFitnessPreferences nextStep={nextStep} prevStep={prevStep} handleChange={handleChange} values={userData} />
-        case 6:
-            return <DieteticPreferences nextStep={nextStep} prevStep={prevStep} handleChange={handleChange} values={userData} />
-        case 7:
-            return <FinalStep prevStep={prevStep} userData={userData} />
-    }
+            navigate('/home');
+        } catch (error) {
+            setErrorMessage('Error al registrarse. Por favor, inténtelo de nuevo.');
+        }
+    };
 
+    const handleNameChange = (newName) => {
+        setName(newName);
+    };
+
+    const handleEmailChange = (newEmail) => {
+        setEmail(newEmail);
+    };
+
+    const handlePasswordChange = (newPassword) => {
+        setPassword(newPassword);
+    };
+
+    const handleBirthDateChange = (newBirthDate) => {
+        setBirthDate(newBirthDate);
+    };
+
+    const handleCloseAlert = () => {
+        setErrorMessage('');
+    };
+
+    return (
+        <>
+            <div className="register_container">
+                {errorMessage && <CustomAlert message={errorMessage} type="error" onClose={handleCloseAlert} />}
+                <Link to="/" className="register_containerLogo">vitatri</Link>
+                <form className="register_containerCard" onSubmit={handleSubmit}>
+                    <p className="register_containerCard_title">Crear Cuenta</p>
+                    <RegisterInputContainer showErrors={showErrors} onInputChange={handleNameChange} inputType="text" labelText="Nombre" />
+                    <RegisterInputContainer showErrors={showErrors} onInputChange={handleEmailChange} inputType="email" labelText="Correo Electrónico" />
+                    <RegisterInputContainer showErrors={showErrors} onInputChange={handlePasswordChange} inputType="password" labelText="Contraseña" />
+                    <RegisterInputContainer showErrors={showErrors} onInputChange={handleBirthDateChange} inputType="date" labelText="Fecha de Nacimiento" />
+                    <ButtonInput buttonType="submit" buttonContent="Registrarse" />
+                </form>
+            </div>
+        </>
+    );
 }
 
-export default memo(Register);
+export default Register;

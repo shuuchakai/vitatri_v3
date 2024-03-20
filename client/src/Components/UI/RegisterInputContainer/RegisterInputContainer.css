@@ -1,0 +1,29 @@
+.register_containerCard_inputContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.register_containerCard_inputContainer_title {
+    font-weight: 500;
+}
+
+.register_containerCard_inputContainer_input {
+    padding: 7px 13px;
+    font-size: 13px;
+    font-weight: 500;
+    border: 1px solid var(--tertiary-color);
+    border-radius: 4px;
+    transition: 300ms ease-in-out;
+}
+
+.register_containerCard_inputContainer_input:active,
+.register_containerCard_inputContainer_input:focus {
+    outline: none;
+    box-shadow: var(--secondary-color) 0px 0px 0px 0.8px;
+}
+
+.register_containerCard_inputContainer_error {
+    color: var(--accent-color-error);
+    font-size: 13px;
+}

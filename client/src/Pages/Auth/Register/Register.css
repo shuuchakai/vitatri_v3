@@ -1,215 +1,50 @@
-.signupPageBackeffect {
-    width: 100vw;
+.register_container {
+    width: 100%;
     height: 100vh;
-    clip-path: ellipse(72% 43% at 79% 100%);
-
-    background: linear-gradient(270deg, #f67b2d, #f2ac3e, #986C27);
-    background-size: 800% 800%;
-
-    -webkit-animation: GradientAnimation 30s ease infinite;
-    -moz-animation: GradientAnimation 30s ease infinite;
-    animation: GradientAnimation 30s ease infinite;
-}
-
-@-webkit-keyframes GradientAnimation {
-    0% {
-        background-position: 0% 50%
-    }
-
-    50% {
-        background-position: 100% 50%
-    }
-
-    100% {
-        background-position: 0% 50%
-    }
-}
-
-@-moz-keyframes GradientAnimation {
-    0% {
-        background-position: 0% 50%
-    }
-
-    50% {
-        background-position: 100% 50%
-    }
-
-    100% {
-        background-position: 0% 50%
-    }
-}
-
-@keyframes GradientAnimation {
-    0% {
-        background-position: 0% 50%
-    }
-
-    50% {
-        background-position: 100% 50%
-    }
-
-    100% {
-        background-position: 0% 50%
-    }
-}
-
-.signupFormContainer {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
-    width: 1100px;
-
-    display: flex;
-    justify-content: space-between;
-}
-
-.signupFormContainerText {
-    width: 500px;
-    padding: 50px 40px;
 
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
 
-    background-color: var(--primary-color-800);
-    border-radius: 5px;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
-
+    padding: 20px;
 }
 
-.signupFormContainerText_container {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+.register_containerLogo {
+    padding: 13px 20px;
+
+    font-weight: 900;
+    font-size: 24px;
+
+    color: var(--secondary-color);
+    transition: 300ms ease-in-out;
 }
 
-.signupFormContainerText>* {
-    opacity: 1;
+.register_containerLogo:hover {
+    color: var(--primary-color);
 }
 
-.signupFormContainerText_title {
-    font-size: 26px;
-    font-weight: 800;
-    letter-spacing: 3px;
-    color: var(--primary-color-50);
+.register_containerCard {
+    width: 700px;
 
-    transition: opacity 0.3s ease;
-}
-
-.signupFormContainerText_title:hover {
-    cursor: pointer;
-    opacity: 0.8;
-}
-
-.signupFormContainerText_description {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-}
-
-.signupFormContainerText_descriptionTitle {
-    font-size: 20px;
-    font-weight: 600;
-    color: var(--primary-color-50);
-}
-
-.signupFormContainerText_descriptionContent {
-    font-size: 16px;
-    font-weight: 400;
-    color: var(--primary-color-50);
-    opacity: 0.8;
-}
-
-.signupFormContainerText_underTitle {
-    font-size: 16px;
-    font-weight: 600;
-    color: var(--primary-color-50);
-}
-
-.signupFormContainerText_underTitleSpan {
-    color: var(--secondary-color-300);
-    text-decoration: underline;
-
-    transition: color 0.3s ease;
-}
-
-.signupFormContainerText_underTitleSpan:hover {
-    color: var(--secondary-color-500);
-    cursor: pointer;
-}
-
-.signupForm {
-    width: 500px;
-    padding: 30px 40px;
+    margin: 30px;
+    padding: 50px;
 
     display: flex;
     flex-direction: column;
     gap: 20px;
 
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    box-shadow: rgba(32, 73, 72, 0.4) 0px 50px 100px -20px, rgba(246, 123, 45, 0.4) 0px 30px 60px -30px;
+    border-radius: 4px;
 }
 
-.signupFormTitle {
-    margin: 0 auto;
-    margin-bottom: 10px;
-
+.register_containerCard_title {
     font-size: 24px;
-    font-weight: 800;
-    color: var(--primary-color-800);
+    font-weight: 700;
+
+    transition: 300ms ease-in-out;
 }
 
-.signupFormInput {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid var(--blackandwhite-200);
-    border-radius: 5px;
-
-    font-size: 14px;
-
-    outline: none;
-}
-
-.signupFormInput:focus {
-    border: 1px solid var(--primary-color-500);
-}
-
-.signupFormInputError {
-    font-size: 12px;
-    color: var(--primary-color-500);
-}
-
-.signupFormNav {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-}
-
-.signupFormNav_title {
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--primary-color-700);
-}
-
-.signupFormButton {
-    width: 100%;
-    padding: 10px;
-
-    border: none;
-    border-radius: 5px;
-
-    font-size: 16px;
-    font-weight: 600;
-    color: var(--primary-color-50);
-    background: var(--primary-color-800);
-
-    transition: background 0.3s ease;
-}
-
-.signupFormButton:hover {
-    cursor: pointer;
-    background: var(--primary-color-700);
+.register_containerCard_title:hover {
+    color: var(--primary-color);
 }
