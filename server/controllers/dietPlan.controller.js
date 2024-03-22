@@ -5,7 +5,7 @@ import DietPlan from '../models/dietPlan.model.js';
 
 
 const openai = new OpenAI({
-    apiKey: process.env.OPENAI_API_KEY || "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",
+    apiKey: process.env.OPENAI_API_KEY,
 });
 
 

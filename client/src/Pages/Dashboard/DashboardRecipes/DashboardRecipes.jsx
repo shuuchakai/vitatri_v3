@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
+import './DashboardRecipes.css';
+
 function DashboardRecipes() {
     const [userData, setUserData] = useState(null);
     const [token, setToken] = useState(null);
@@ -25,6 +27,7 @@ function DashboardRecipes() {
                     "Authorization": `Bearer ${token}`
                 }
             });
+            alert("Las recetas se generaron")
         } catch (error) {
             console.log(error)
             alert('Error al generar las recetas. Por favor, inténtelo de nuevo.', error);
@@ -48,30 +51,33 @@ function DashboardRecipes() {
     }
 
     return (
-        <div>
-            <button onClick={generateRecipes}>Generar Recetas</button>
-            <button onClick={showRecipes}>Mostrar Recetas</button>
-            <div>
+        <div className="recipes">
+            <button className="recipesGenerateButton" onClick={generateRecipes}>Generar Recetas</button>
+            <button className="recipesGenerateButton" onClick={showRecipes}>Mostrar Recetas</button>
+            <div className="recipesContainer">
                 {recipes && recipes.map((recipePlan, index) => (
-                    <div key={index}>
-                        <h1>{recipePlan.name}</h1>
-                        <p>{recipePlan.description}</p>
+                    <div className="recipesContainer_recipe" key={index}>
+                        <p className="recipesContainer_recipeTitle">{recipePlan.name}</p>
+                        <p className="recipesContainer_recipeDesc">{recipePlan.description}</p>
                         {recipePlan.recipes.map((recipe, i) => (
-                            <div key={i}>
-                                <h1>{recipe.recipeName}</h1>
-                                <p>Total Nutritional Values:</p>
-                                <p>Calories: {recipe.totalNutritionalValues.calories}</p>
-                                <p>Proteins: {recipe.totalNutritionalValues.proteins}</p>
-                                <p>Fats: {recipe.totalNutritionalValues.fats}</p>
-                                <p>Carbs: {recipe.totalNutritionalValues.carbs}</p>
-                                <div>
+                            <div className="recipesContainer_recipeContainer" key={i}>
+                                <p className="recipesContainer_recipeSubtitle">{recipe.recipeName}</p>
+                                <p className="recipesContainer_recipeSubsubtitle">Valores nutricionales totales:</p>
+                                <div className="recipesContainer_recipeContentContainer">
+                                    <p className="recipesContainer_recipeContent">Calorías: {recipe.totalNutritionalValues.calories}</p>
+                                    <p className="recipesContainer_recipeContent">Proteínas: {recipe.totalNutritionalValues.proteins}</p>
+                                    <p className="recipesContainer_recipeContent">Grasas: {recipe.totalNutritionalValues.fats}</p>
+                                    <p className="recipesContainer_recipeContent">Carbohidratos: {recipe.totalNutritionalValues.carbs}</p>
+                                </div>
+                                <p className="recipesContainer_recipeIngredientsContainerTitle">Valores nutricionales específicos:</p>
+                                <div className="recipesContainer_recipeIngredientsContainer">
                                     {recipe.ingredients.map((ingredient, j) => (
-                                        <div key={j}>
-                                            <p>{ingredient.ingredientName}</p>
-                                            <p>Calories: {ingredient.calories}</p>
-                                            <p>Proteins: {ingredient.proteins}</p>
-                                            <p>Fats: {ingredient.fats}</p>
-                                            <p>Carbs: {ingredient.carbs}</p>
+                                        <div className="recipesContainer_recipeIngredient" key={j}>
+                                            <p className="recipesContainer_recipeIngredient_title">{ingredient.ingredientName}:</p>
+                                            <p className="recipesContainer_recipeIngredient_content">Calorías: {ingredient.calories}</p>
+                                            <p className="recipesContainer_recipeIngredient_content">Proteínas: {ingredient.proteins}</p>
+                                            <p className="recipesContainer_recipeIngredient_content">Grasas: {ingredient.fats}</p>
+                                            <p className="recipesContainer_recipeIngredient_content">Carbohidratos: {ingredient.carbs}</p>
                                         </div>
                                     ))}
                                 </div>

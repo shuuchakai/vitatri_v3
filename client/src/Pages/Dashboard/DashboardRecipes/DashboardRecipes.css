@@ -1,0 +1,127 @@
+.recipesContainer {
+    margin: 10px;
+    padding: 30px;
+
+    border: 1px solid var(--primary-color);
+    border-radius: 4px;
+}
+
+.recipesContainer_recipe {
+    gap: 20px;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.recipesContainer_recipeTitle {
+    font-size: 40px;
+    font-weight: 700;
+}
+
+.recipesContainer_recipeDesc {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.recipesContainer_recipeContainer {
+    margin-top: 20px;
+    padding: 20px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    border: 1px solid var(--secondary-color);
+    border-radius: 4px;
+}
+
+.recipesContainer_recipeSubtitle {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.recipesContainer_recipeSubsubtitle {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.recipesContainer_recipeContentContainer {
+    display: flex;
+    gap: 20px;
+}
+
+.recipesContainer_recipeContent {
+    margin-top: 10px;
+    padding: 10px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    border-radius: 4px;
+
+    font-weight: 600;
+    color: var(--background-color);
+    background-color: var(--secondary-color);
+}
+
+.recipesContainer_recipeIngredientsContainer {
+    margin-top: 10px;
+    padding: 10px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    border-radius: 4px;
+
+    background-color: var(--secondary-color);
+}
+
+.recipesContainer_recipeIngredient {
+    display: flex;
+    gap: 10px;
+}
+
+.recipesContainer_recipeIngredient_title {
+    color: var(--background-color);
+    font-weight: 700;
+}
+
+.recipesContainer_recipeIngredient_content {
+    color: var(--background-color);
+    font-weight: 500;
+}
+
+.recipesContainer_recipeIngredientsContainerTitle {
+    margin: 10px 0 0 0;
+
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--secondary-color);
+}
+
+.recipesGenerateButton {
+    padding: 7px 13px;
+
+    border: none;
+    border-radius: 4px;
+    font-size: 24px;
+    font-weight: 400;
+    color: var(--background-color);
+    background-color: var(--secondary-color);
+    cursor: pointer;
+
+    transition: 300ms ease-in-out;
+}
+
+.recipesGenerateButton:hover {
+    background-color: var(--primary-color);
+}
+
+.recipes {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}

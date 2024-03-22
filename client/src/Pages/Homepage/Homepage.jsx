@@ -46,18 +46,21 @@ function Homepage() {
                         <div className="homepage_secondSectionContainer_card">
                             <p className="homepage_secondSectionContainer_card_title">Ejercicio personalizado</p>
                             <div className="homepage_secondSectionContainer_card_iconContainer">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="200" viewBox="0 -960 960 960" width="200"><path d="M480-120 352-234q-72-65-123.5-116t-85-96q-33.5-45-49-87T79-621q0-94 63-156.5T299-840q52 0 99 22t82 62q35-40 82-62t99-22q94 0 157 62.5T881-621q0 46-15.5 88t-49 87q-33.5 45-85 96T608-234L480-120ZM171-560h618q6-16 9-31t3-30q0-60-41.5-99.5T661-760q-47 0-86.5 27.5T504-660h-48q-31-45-70.5-72.5T299-760q-57 0-98.5 39.5T159-621q0 15 3 30t9 31Zm102 140h414q16-17 29-31.5t24-28.5H220q11 14 24 28.5t29 31.5Zm207 192q36-32 67.5-59.5T605-340H355q26 25 57.5 52.5T480-228Zm0-332Z" /></svg>
                             </div>
                             <p className="homepage_secondSectionContainer_card_description">Diseñamos planes de ejercicio personalizados para ti, basados en tus objetivos y necesidades.</p>
                         </div>
                         <div className="homepage_secondSectionContainer_card">
                             <p className="homepage_secondSectionContainer_card_title">Dieta personalizada</p>
                             <div className="homepage_secondSectionContainer_card_iconContainer">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="200" viewBox="0 -960 960 960" width="200"><path d="m826-585-56-56 30-31-128-128-31 30-57-57 30-31q23-23 57-22.5t57 23.5l129 129q23 23 23 56.5T857-615l-31 30ZM346-104q-23 23-56.5 23T233-104L104-233q-23-23-23-56.5t23-56.5l30-30 57 57-31 30 129 129 30-31 57 57-30 30Zm397-336 57-57-303-303-57 57 303 303ZM463-160l57-58-302-302-58 57 303 303Zm-6-234 110-109-64-64-109 110 63 63Zm63 290q-23 23-57 23t-57-23L104-406q-23-23-23-57t23-57l57-57q23-23 56.5-23t56.5 23l63 63 110-110-63-62q-23-23-23-57t23-57l57-57q23-23 56.5-23t56.5 23l303 303q23 23 23 56.5T857-441l-57 57q-23 23-57 23t-57-23l-62-63-110 110 63 63q23 23 23 56.5T577-161l-57 57Z" /></svg>
                             </div>
                             <p className="homepage_secondSectionContainer_card_description">Diseñamos planes de dieta personalizados para ti, basados en tus objetivos y necesidades.</p>
                         </div>
                         <div className="homepage_secondSectionContainer_card">
                             <p className="homepage_secondSectionContainer_card_title">Seguimiento de progreso</p>
                             <div className="homepage_secondSectionContainer_card_iconContainer">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="200" viewBox="0 -960 960 960" width="200"><path d="M657-121 544-234l56-56 57 57 127-127 56 56-183 183Zm-537 1v-80h360v80H120Zm0-160v-80h360v80H120Zm0-160v-80h720v80H120Zm0-160v-80h720v80H120Zm0-160v-80h720v80H120Z" /></svg>
                             </div>
                             <p className="homepage_secondSectionContainer_card_description">Lleva un registro de tus avances y recibe recomendaciones personalizadas para mejorar tu bienestar.</p>
                         </div>

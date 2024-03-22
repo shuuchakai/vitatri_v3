@@ -132,6 +132,10 @@
     color: var(--background-color);
 }
 
+.homepage_secondSectionContainer_card_iconContainer {
+    fill: var(--background-color);
+}
+
 .homepage_secondSectionContainer_card_description {
     font-size: 16px;
     font-weight: 500;

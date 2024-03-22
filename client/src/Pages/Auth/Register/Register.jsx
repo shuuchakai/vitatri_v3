@@ -130,14 +130,14 @@ function Register() {
     return (
         <>
             <div className="register_container">
-                <div className="lines">
+                {/* <div className="lines">
                     <div className="line"></div>
                     <div className="line"></div>
                     <div className="line"></div>
                     <div className="line"></div>
                     <div className="line"></div>
                     <div className="line"></div>
-                </div>
+                </div> */}
                 {errorMessage && <CustomAlert message={errorMessage} type="error" onClose={handleCloseAlert} />}
                 <Link to="/" className="register_containerLogo">vitatri</Link>
                 <form className="register_containerCard" onSubmit={handleSubmit}>
@@ -224,22 +224,22 @@ function Register() {
                     )}
                     {step === 5 && (
                         <>
-                        <RegisterInputContainer
-                            showErrors={showErrors}
-                            onInputChange={handleFitnessExperienceChange}
-                            inputType="select"
-                            labelText="Experiencia de Ejercicio"
-                            name="fitnessExperience"
-                            options={fitnessExperiences}
-                        />
-                        <RegisterInputContainer
-                            showErrors={showErrors}
-                            onInputChange={handlePersonalFitnessPreferencesChange}
-                            inputType="select"
-                            labelText="Preferencias personales de Ejercicio"
-                            name="personalFitnessPreferences"
-                            options={personalFitnessPreferencess}
-                        />
+                            <RegisterInputContainer
+                                showErrors={showErrors}
+                                onInputChange={handleFitnessExperienceChange}
+                                inputType="select"
+                                labelText="Experiencia de Ejercicio"
+                                name="fitnessExperience"
+                                options={fitnessExperiences}
+                            />
+                            <RegisterInputContainer
+                                showErrors={showErrors}
+                                onInputChange={handlePersonalFitnessPreferencesChange}
+                                inputType="select"
+                                labelText="Preferencias personales de Ejercicio"
+                                name="personalFitnessPreferences"
+                                options={personalFitnessPreferencess}
+                            />
                         </>
                     )}
                     {step === 6 && (
