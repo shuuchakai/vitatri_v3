@@ -1,0 +1,124 @@
+.profileTitle {
+    margin: 30px;
+
+    font-size: 40px;
+    font-weight: 800;
+}
+
+.profileContainer {
+    margin: 30px;
+    padding: 50px;
+
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    box-shadow: rgba(32, 73, 72, 0.4) 0px 50px 100px -20px, rgba(246, 123, 45, 0.4) 0px 30px 60px -30px;
+    border-radius: 4px;
+}
+
+.profile_top {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.profile_topLeft {
+    padding: 20px;
+
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    border: 1px solid var(--primary-color);
+    border-radius: 4px;
+}
+
+.profile_topLeft_left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    fill: var(--primary-color);
+}
+
+.profile_topLeft_right {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.profile_topRight {
+    padding: 20px;
+
+    gap: 5px;
+    display: flex;
+    flex-direction: column;
+
+    border: 1px solid var(--primary-color);
+    border-radius: 4px;
+}
+
+.profile_topRight_title {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.profile_topRight_descriptionTop {
+    gap: 10px;
+    display: flex;
+    align-items: center;
+
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.profile_topRight_descriptionBottom {
+    gap: 10px;
+    display: flex;
+    align-items: center;
+
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.profileBottom {
+    width: 100%;
+
+    padding: 20px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    border: 1px solid var(--primary-color);
+    border-radius: 4px;
+}
+
+.profileBottom_title {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.profileBottom_content {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.profileBottom_container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.profileBottom_containerContent {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}

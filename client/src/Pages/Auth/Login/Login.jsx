@@ -18,9 +18,12 @@ function Login() {
         event.preventDefault();
 
         try {
-            await axios.post('/api/users/login', { email, password });
+            const response = await axios.post('http://localhost:5000/api/user/login', { email, password });
 
-            navigate('/home');
+            console.log(response.data);
+            localStorage.setItem('userData', JSON.stringify(response.data));
+
+            navigate('/dashboard');
         } catch (error) {
             alert('Error al iniciar sesión. Por favor, inténtelo de nuevo.');
         }

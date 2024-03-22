@@ -51,8 +51,12 @@ function Register() {
             setStep(step + 1);
         } else {
             try {
-                await axios.post('http://localhost:5000/api/user/register', { name, email, password, dateOfBirth, height, weight, bloodType, mainGoal, dieteticPreferences, fitnessExperience, medicLimitations, personalFitnessPreferences, biologicalSex });
-                navigate('/home');
+                const response = await axios.post('http://localhost:5000/api/user/register', { name, email, password, dateOfBirth, height, weight, bloodType, mainGoal, dieteticPreferences, fitnessExperience, medicLimitations, personalFitnessPreferences, biologicalSex });
+
+                console.log(response.data);
+                localStorage.setItem('userData', JSON.stringify(response.data));
+
+                navigate('/dashboard');
             } catch (error) {
                 console.log(error);
                 setErrorMessage('Error al registrarse. Por favor, inténtelo de nuevo.');

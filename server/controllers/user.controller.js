@@ -56,14 +56,14 @@ const register = async (req, res) => {
 
         jwt.sign(
             payload,
-            process.env.JWT_SECRET || "KSASIASINAINSAMKSAKMS",
+            process.env.JWT_SECRET,
             { expiresIn: 360000 },
             (err, token) => {
                 if (err) throw err;
                 res.json({ token, user });
             }
         );
-        
+
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Error del servidor');
@@ -97,8 +97,7 @@ const login = async (req, res) => {
             { expiresIn: 360000 },
             (err, token) => {
                 if (err) throw err;
-                res.cookie('token', token, { httpOnly: true, sameSite: 'strict' }); // Establecer el token en una cookie HTTP Only
-                res.json({ user });
+                res.json({ token, user });
             }
         );
     } catch (err) {
