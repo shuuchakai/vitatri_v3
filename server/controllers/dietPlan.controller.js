@@ -4,6 +4,10 @@ import User from '../models/user.model.js';
 import DietPlan from '../models/dietPlan.model.js';
 
 
+const openai = new OpenAI({
+    apiKey: process.env.OPENAI_API_KEY,
+});
+
 
 const createDietPlan = async (req, res) => {
     try {
