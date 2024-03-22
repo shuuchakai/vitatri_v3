@@ -22,7 +22,7 @@ const userSchema = new Schema({
         required: true
     },
     dateOfBirth: {
-        type: Date,
+        type: String,
         required: true
     },
     height: {
@@ -36,7 +36,7 @@ const userSchema = new Schema({
         min: 0
     },
     dieteticPreferences: {
-        type: [String],
+        type: String,
         // enum: ["Vegetariano", "Vegano", "Sin gluten", "Sin lactosa", "Sin azúcar", "Sin frutos secos", "Sin mariscos", "Sin soja", "Sin huevos", "Sin trigo", "Sin maíz", "Sin arroz", "Sin carne", "Sin pescado", "Sin cerdo", "Sin pollo", "Sin ternera", "Sin cordero", "Sin pavo", "Sin pato", "Sin conejo"]
     },
     fitnessExperience: {
@@ -44,7 +44,7 @@ const userSchema = new Schema({
         // enum: ["Principiante", "Intermedio", "Avanzado"],
     },
     medicLimitations: {
-        type: [String],
+        type: String,
         // enum: ["Diabetes", "Hipertensión", "Hipotensión", "Colesterol alto", "Triglicéridos altos", "Enfermedad cardíaca", "Enfermedad pulmonar", "Enfermedad renal", "Enfermedad hepática", "Enfermedad tiroidea", "Enfermedad autoinmune", "Enfermedad gastrointestinal", "Enfermedad neurológica", "Enfermedad mental", "Enfermedad ósea", "Enfermedad muscular", "Enfermedad articular", "Enfermedad de la piel", "Enfermedad de los ojos", "Enfermedad de los oídos", "Enfermedad de la nariz", "Enfermedad de la garganta", "Enfermedad de la boca", "Enfermedad de los dientes", "Enfermedad de la lengua", "Enfermedad de la mandíbula", "Enfermedad de la cabeza", "Enfermedad de la cara", "Enfermedad de la nuca", "Enfermedad de la espalda", "Enfermedad de los hombros", "Enfermedad de los brazos", "Enfermedad de los codos", "Enfermedad de los antebrazos", "Enfermedad de las muñecas", "Enfermedad de las manos", "Enfermedad de los dedos", "Enfermedad de la cintura", "Enfermedad de las caderas", "Enfermedad de los muslos", "Enfermedad de las rodillas", "Enfermedad de las pantorrillas", "Enfermedad de los tobillos", "Enfermedad de los pies", "Enfermedad de los dedos de los pies", "Enfermedad de las uñas"]
     },
     bloodType: {
@@ -52,7 +52,7 @@ const userSchema = new Schema({
         // enum: ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"]
     },
     personalFitnessPreferences: {
-        type: [String],
+        type: String,
         // enum: ["Entrenamiento en casa", "Entrenamiento en gimnasio", "Entrenamiento al aire libre", "Entrenamiento en grupo", "Entrenamiento individual", "Entrenamiento con máquinas", "Entrenamiento con pesas", "Entrenamiento con bandas elásticas", "Entrenamiento con TRX", "Entrenamiento con pelota medicinal", "Entrenamiento con kettlebell", "Entrenamiento con barra"]
     },
     mainGoal: {

@@ -15,6 +15,6 @@ const auth = async (req, res, next) => {
     } catch (err) {
         res.status(401).json({ msg: 'Token no válido' });
     }
-};w
+};
 
 export default auth;

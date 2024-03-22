@@ -51,3 +51,4 @@ export const validateBirthDate = async (birthDate) => {
         return error.message;
     }
 };
+

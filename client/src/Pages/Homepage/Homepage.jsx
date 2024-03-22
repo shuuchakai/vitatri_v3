@@ -1,11 +1,26 @@
+import { useRef, useEffect } from 'react';
+import Globe from 'react-globe.gl';
 import { Link } from "react-router-dom";
 
 import MainHeader from "../../Components/MainHeader/MainHeader";
 import MainFooter from "../../Components/MainFooter/MainFooter";
 
+import data from '../datasets/ne_110m_populated_places_simple.json';
+
 import './Homepage.css';
 
 function Homepage() {
+    const globeEl = useRef(undefined);
+
+    const places = data.features;
+
+    useEffect(() => {
+        globeEl.current.controls().enableZoom = false;
+        globeEl.current.controls().autoRotate = true;
+        globeEl.current.controls().autoRotateSpeed = 0.7;
+        globeEl.current.pointOfView({ lat: 22.6345, lng: -79.5528, altitude: 1.7 });
+    }, []);
+
     return (
         <>
             <MainHeader />
@@ -48,7 +63,33 @@ function Homepage() {
                         </div>
                     </div>
                 </section>
-                <section className="homepage_thirdSectionContainer"></section>
+                <section className="homepage_thirdSectionContainer">
+                    <div className="homepage_thirdSectionContainerContent">
+                        <div className="homepage_thirdSectionContainer_left">
+                            <p className="homepage_thirdSectionContainer_leftTitle">¡Tu seguimiento en cualquier parte del mundo!</p>
+                            <p className="homepage_thirdSectionContainer_leftDescription">En Vitatri entendemos que tu salud y bienestar te acompañan a todas partes. Por eso, hemos diseñado nuestra plataforma para que esté al alcance de tu mano, sin importar dónde te encuentres o qué dispositivo estés utilizando. Disponible en múltiples plataformas, Vitatri se adapta a tu estilo de vida dinámico, permitiéndote monitorear tu progreso, ya sea desde tu teléfono móvil, tu tableta o tu ordenador.</p>
+                        </div>
+                        <div className="homepage_thirdSectionContainer_right">
+                            <Globe
+                                width={1000}
+                                height={800}
+                                backgroundColor="#4DAFAD"
+                                globeImageUrl="//unpkg.com/three-globe/example/img/earth-night.jpg"
+                                labelsData={places}
+                                labelLat={d => d.properties.latitude}
+                                labelLng={d => d.properties.longitude}
+                                labelText={d => d.properties.name}
+                                labelSize={d => Math.sqrt(d.properties.pop_max) * 4e-4}
+                                labelDotRadius={d => Math.sqrt(d.properties.pop_max) * 4e-4}
+                                labelColor={() => '#F67B2D'}
+                                labelResolution={2}
+                                atmosphereColor="#F67B2D"
+                                globeResolution={50}
+                                ref={globeEl}
+                            />
+                        </div>
+                    </div>
+                </section>
                 <section className="homepage_fourthSectionContainer"></section>
             </main>
             <MainFooter />

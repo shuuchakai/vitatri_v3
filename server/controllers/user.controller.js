@@ -4,7 +4,21 @@ import jwt from 'jsonwebtoken';
 import User from '../models/user.model.js';
 
 const register = async (req, res) => {
-    const { email, password } = req.body;
+    const {
+        name,
+        email,
+        password,
+        biologicalSex,
+        dateOfBirth,
+        height,
+        weight,
+        dieteticPreferences,
+        fitnessExperience,
+        medicLimitations,
+        bloodType,
+        personalFitnessPreferences,
+        mainGoal
+    } = req.body;
 
     try {
         let user = await User.findOne({ email });
@@ -13,7 +27,21 @@ const register = async (req, res) => {
             return res.status(400).json({ msg: 'El usuario ya existe' });
         }
 
-        user = new User(req.body);
+        user = new User({
+            name,
+            email,
+            password,
+            biologicalSex,
+            dateOfBirth,
+            height,
+            weight,
+            dieteticPreferences,
+            fitnessExperience,
+            medicLimitations,
+            bloodType,
+            personalFitnessPreferences,
+            mainGoal
+        });
 
         const salt = await bcrypt.genSalt(10);
         user.password = await bcrypt.hash(password, salt);
@@ -28,20 +56,19 @@ const register = async (req, res) => {
 
         jwt.sign(
             payload,
-            process.env.JWT_SECRET,
+            process.env.JWT_SECRET || "KSASIASINAINSAMKSAKMS",
             { expiresIn: 360000 },
             (err, token) => {
                 if (err) throw err;
-                res.cookie('token', token, { httpOnly: true, sameSite: 'strict' }); // Establecer el token en una cookie HTTP Only
-                res.json({ user });
+                res.json({ token, user });
             }
         );
+        
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Error del servidor');
     }
 };
-
 const login = async (req, res) => {
     const { email, password } = req.body;
 

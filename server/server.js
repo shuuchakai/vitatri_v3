@@ -5,7 +5,7 @@ import cookieParser from 'cookie-parser';
 import morgan from 'morgan';
 import cors from 'cors';
 import helmet from 'helmet';
-import rateLimit from 'express-rate-limit';
+// import rateLimit from 'express-rate-limit';
 
 import userRouter from './routes/user.router.js';
 import specificGoalRouter from './routes/specificGoal.router.js';
@@ -16,17 +16,20 @@ dotenv.config();
 const app = express();
 
 const PORT = process.env.PORT || 5000;
-const MONGODB_URL = process.env.MONGODB_URL;
+const MONGODB_URL = process.env.MONGODB_URL || "mongodb://mongo:cg45AHCgF31G4C44DadHG21bGBHeBGhE@roundhouse.proxy.rlwy.net:20744";
 
 app.use(helmet());
 
-const limiter = rateLimit({
-    windowMs: 15 * 60 * 1000,
-    max: 100
-});
-app.use(limiter);
+// const limiter = rateLimit({
+//     windowMs: 15 * 60 * 1000,
+//     max: 100
+// });
+// app.use(limiter);
 
-app.use(cors());
+app.use(cors({
+    origin: 'http://localhost:5173', // reemplaza esto con la URL de tu frontend
+    credentials: true
+}));
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(cookieParser());
